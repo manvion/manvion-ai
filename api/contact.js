@@ -28,6 +28,16 @@ function getDoc() {
     return docInitPromise;
 }
 
+async function parseBody(req) {
+    return new Promise((resolve) => {
+        let raw = '';
+        req.on('data', chunk => raw += chunk);
+        req.on('end', () => {
+            try { resolve(JSON.parse(raw)); } catch { resolve({}); }
+        });
+    });
+}
+
 module.exports = async (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -35,7 +45,7 @@ module.exports = async (req, res) => {
     if (req.method === 'OPTIONS') return res.status(200).end();
     if (req.method !== 'POST') return res.status(405).end();
 
-    const { name, email, company, service, message } = req.body;
+    const { name, email, company, service, message } = await parseBody(req);
     let sheetSaved = false;
     let emailSent = false;
 
