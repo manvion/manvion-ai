@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 const { GoogleSpreadsheet } = require('google-spreadsheet');
+const { JWT } = require('google-auth-library');
 
 const app = express();
 app.use(cors());
@@ -29,8 +30,12 @@ async function initDoc() {
         // Fix escaped newlines (common when pasting into Vercel)
         private_key = private_key.replace(/\\n/g, '\n');
 
-        const d = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID);
-        await d.useServiceAccountAuth({ client_email, private_key });
+        const auth = new JWT({
+            email: client_email,
+            key: private_key,
+            scopes: ['https://www.googleapis.com/auth/spreadsheets']
+        });
+        const d = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID, auth);
         await d.loadInfo();
         console.log('Google Sheet connected:', d.title);
         return d;
