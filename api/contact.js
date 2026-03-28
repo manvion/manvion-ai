@@ -14,14 +14,23 @@ function getDoc() {
 }
 async function initDoc() {
     try {
-        const creds = JSON.parse(process.env.GOOGLE_CREDENTIALS || '{}');
-        if (!creds.client_email) throw new Error('GOOGLE_CREDENTIALS missing');
-        creds.private_key = creds.private_key.replace(/\\n/g, '\n');
+        // Support both full JSON credentials or individual env vars
+        let client_email = process.env.GOOGLE_CLIENT_EMAIL;
+        let private_key = process.env.GOOGLE_PRIVATE_KEY;
+
+        if (!client_email || !private_key) {
+            const creds = JSON.parse(process.env.GOOGLE_CREDENTIALS || '{}');
+            client_email = creds.client_email;
+            private_key = creds.private_key;
+        }
+
+        if (!client_email) throw new Error('Missing Google credentials env vars');
+
+        // Fix escaped newlines (common when pasting into Vercel)
+        private_key = private_key.replace(/\\n/g, '\n');
+
         const d = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID);
-        await d.useServiceAccountAuth({
-            client_email: creds.client_email,
-            private_key: creds.private_key
-        });
+        await d.useServiceAccountAuth({ client_email, private_key });
         await d.loadInfo();
         console.log('Google Sheet connected:', d.title);
         return d;

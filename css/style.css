@@ -35,6 +35,8 @@ h1, h2, h3, h4, h5 { font-family: 'Outfit', sans-serif; }
 .nav-links a:hover { color: var(--text-pure); }
 .nav-cta { background: linear-gradient(90deg, rgba(0,243,255,0.1), rgba(157,0,255,0.1)); border: 1px solid var(--neon-blue); color: white; padding: 0.8rem 2rem; border-radius: 30px; cursor: pointer; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; box-shadow: 0 0 20px rgba(0,243,255,0.3), inset 0 0 10px rgba(157,0,255,0.2); transition: 0.3s; }
 .nav-cta:hover { box-shadow: 0 0 35px rgba(0,243,255,0.6), inset 0 0 20px rgba(157,0,255,0.4); transform: translateY(-2px); text-shadow: 0 0 8px #fff; }
+.lang-toggle { background: none; border: 1px solid var(--glass-border); color: var(--text-muted); padding: 0.45rem 0.9rem; border-radius: 8px; font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; cursor: pointer; transition: 0.3s; }
+.lang-toggle:hover { border-color: var(--neon-blue); color: var(--neon-blue); }
 
 /* Buttons */
 button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; outline: none; transition: all 0.5s var(--curve); }
@@ -78,7 +80,8 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; outlin
 .rec-orb { background: #ff0055; box-shadow: 0 0 20px #ff0055; }
 
 /* Service Grids */
-.service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+@media (max-width: 768px) { .service-grid { grid-template-columns: 1fr; } }
 .service-grid.dense { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
 .dual-category { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
 .service-grid.vertical { grid-template-columns: 1fr; gap: 1.2rem; }
