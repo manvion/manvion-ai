@@ -296,18 +296,20 @@ const handleContactSubmit = async (e) => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(leadData)
         });
-        
-        const data = await response.json();
-        
+
+        let data = {};
+        try { data = await response.json(); } catch {}
+
         if (response.ok) {
             statusDiv.innerHTML = "✅ SUCCESS: Lead transmitted instantly to Manvion personnel.";
             statusDiv.style.color = "#00ff66";
             e.target.reset();
         } else {
-            throw new Error(data.error || "Server rejection.");
+            statusDiv.innerHTML = `⚠️ ERROR ${response.status}: ${data.error || 'Server error. Check Vercel function logs.'}`;
+            statusDiv.style.color = "#ff0055";
         }
     } catch (err) {
-        statusDiv.innerHTML = "⚠️ ERROR: Backend unreachable. Ensure the Node server is running on port 3000.";
+        statusDiv.innerHTML = `⚠️ Network error: ${err.message}`;
         statusDiv.style.color = "#ff0055";
         console.error(err);
     } finally {

@@ -1,9 +1,18 @@
+const express = require('express');
+const cors = require('cors');
 const nodemailer = require('nodemailer');
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 const { JWT } = require('google-auth-library');
 
-let docInitPromise = null;
+const app = express();
+app.use(cors());
+app.use(express.json());
 
+let docInitPromise = null;
+function getDoc() {
+    if (!docInitPromise) docInitPromise = initDoc();
+    return docInitPromise;
+}
 async function initDoc() {
     try {
         const creds = JSON.parse(process.env.GOOGLE_CREDENTIALS || '{}');
@@ -16,6 +25,7 @@ async function initDoc() {
         });
         const d = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID, auth);
         await d.loadInfo();
+        console.log('Google Sheet connected:', d.title);
         return d;
     } catch (err) {
         console.warn('Google Sheets unavailable:', err.message);
@@ -23,29 +33,8 @@ async function initDoc() {
     }
 }
 
-function getDoc() {
-    if (!docInitPromise) docInitPromise = initDoc();
-    return docInitPromise;
-}
-
-async function parseBody(req) {
-    return new Promise((resolve) => {
-        let raw = '';
-        req.on('data', chunk => raw += chunk);
-        req.on('end', () => {
-            try { resolve(JSON.parse(raw)); } catch { resolve({}); }
-        });
-    });
-}
-
-module.exports = async (req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    if (req.method === 'OPTIONS') return res.status(200).end();
-    if (req.method !== 'POST') return res.status(405).end();
-
-    const { name, email, company, service, message } = await parseBody(req);
+app.post('*', async (req, res) => {
+    const { name, email, company, service, message } = req.body || {};
     let sheetSaved = false;
     let emailSent = false;
 
@@ -79,7 +68,7 @@ module.exports = async (req, res) => {
                 from: `"Manvion Lead Engine" <${MY_EMAIL}>`,
                 to: MY_EMAIL,
                 replyTo: email,
-                subject: `🚨 NEW LEAD: ${service} — ${company}`,
+                subject: `NEW LEAD: ${service} - ${company}`,
                 text: `New lead from Manvion.\n\nName: ${name}\nEmail: ${email}\nCompany: ${company}\nService: ${service}\n\nMessage:\n${message}`
             });
             emailSent = true;
@@ -90,7 +79,9 @@ module.exports = async (req, res) => {
     }
 
     if (sheetSaved || emailSent) {
-        return res.status(200).json({ success: true, message: 'Lead captured successfully.' });
+        return res.json({ success: true, message: 'Lead captured successfully.' });
     }
-    return res.status(500).json({ error: 'Failed to save lead. Check Vercel env vars.' });
-};
+    return res.status(500).json({ error: 'Check GOOGLE_CREDENTIALS, GOOGLE_SHEET_ID, MY_EMAIL env vars in Vercel.' });
+});
+
+module.exports = app;
