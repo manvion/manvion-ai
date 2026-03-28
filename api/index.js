@@ -13,28 +13,34 @@ app.use(express.json());
 // ==========================================
 // GOOGLE SHEETS — lazy init per serverless instance
 // ==========================================
-let doc = null;
-let docReady = false;
+let docInitPromise = null;
 
 async function getDoc() {
-    if (docReady) return doc;
-    docReady = true;
+    if (!docInitPromise) docInitPromise = initDoc();
+    return docInitPromise;
+}
+
+async function initDoc() {
     try {
         const creds = JSON.parse(process.env.GOOGLE_CREDENTIALS || '{}');
         if (!creds.client_email) throw new Error('GOOGLE_CREDENTIALS env var missing or invalid.');
+
+        // Vercel stores env vars as plain strings — fix escaped newlines in private key
+        creds.private_key = creds.private_key.replace(/\\n/g, '\n');
+
         const auth = new JWT({
             email: creds.client_email,
             key: creds.private_key,
             scopes: ['https://www.googleapis.com/auth/spreadsheets'],
         });
-        doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID, auth);
-        await doc.loadInfo();
-        console.log(`✅ Google Sheet connected: [${doc.title}]`);
+        const d = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID, auth);
+        await d.loadInfo();
+        console.log(`✅ Google Sheet connected: [${d.title}]`);
+        return d;
     } catch (err) {
         console.warn('⚠️ Google Sheets unavailable:', err.message);
-        doc = null;
+        return null;
     }
-    return doc;
 }
 
 // ==========================================
@@ -62,6 +68,13 @@ app.post('/api/contact', async (req, res) => {
     if (sheet) {
         try {
             const tab = sheet.sheetsByIndex[0];
+
+            // Set headers if sheet is blank
+            await tab.loadHeaderRow().catch(() => null);
+            if (!tab.headerValues || tab.headerValues.length === 0) {
+                await tab.setHeaderRow(['Name', 'Email', 'Company', 'Service', 'Message', 'Date']);
+            }
+
             await tab.addRow({
                 Name: name,
                 Email: email,
