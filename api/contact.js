@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 const { GoogleSpreadsheet } = require('google-spreadsheet');
-const { JWT } = require('google-auth-library');
 
 const app = express();
 app.use(cors());
@@ -18,12 +17,11 @@ async function initDoc() {
         const creds = JSON.parse(process.env.GOOGLE_CREDENTIALS || '{}');
         if (!creds.client_email) throw new Error('GOOGLE_CREDENTIALS missing');
         creds.private_key = creds.private_key.replace(/\\n/g, '\n');
-        const auth = new JWT({
-            email: creds.client_email,
-            key: creds.private_key,
-            scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+        const d = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID);
+        await d.useServiceAccountAuth({
+            client_email: creds.client_email,
+            private_key: creds.private_key
         });
-        const d = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID, auth);
         await d.loadInfo();
         console.log('Google Sheet connected:', d.title);
         return d;
@@ -37,6 +35,8 @@ app.post('*', async (req, res) => {
     const { name, email, company, service, message } = req.body || {};
     let sheetSaved = false;
     let emailSent = false;
+    let sheetError = null;
+    let emailError = null;
 
     // Save to Google Sheet
     const doc = await getDoc();
@@ -49,10 +49,12 @@ app.post('*', async (req, res) => {
             }
             await tab.addRow({ Name: name, Email: email, Company: company, Service: service, Message: message, Date: new Date().toISOString() });
             sheetSaved = true;
-            console.log('Lead saved to sheet.');
         } catch (err) {
+            sheetError = err.message;
             console.error('Sheets error:', err.message);
         }
+    } else {
+        sheetError = 'GOOGLE_CREDENTIALS or GOOGLE_SHEET_ID missing/invalid';
     }
 
     // Send email
@@ -72,16 +74,22 @@ app.post('*', async (req, res) => {
                 text: `New lead from Manvion.\n\nName: ${name}\nEmail: ${email}\nCompany: ${company}\nService: ${service}\n\nMessage:\n${message}`
             });
             emailSent = true;
-            console.log('Lead email sent.');
         } catch (err) {
+            emailError = err.message;
             console.error('Email error:', err.message);
         }
+    } else {
+        emailError = 'MY_EMAIL env var missing';
     }
 
     if (sheetSaved || emailSent) {
         return res.json({ success: true, message: 'Lead captured successfully.' });
     }
-    return res.status(500).json({ error: 'Check GOOGLE_CREDENTIALS, GOOGLE_SHEET_ID, MY_EMAIL env vars in Vercel.' });
+    return res.status(500).json({
+        error: 'Both delivery methods failed.',
+        sheet: sheetError,
+        email: emailError
+    });
 });
 
 module.exports = app;
