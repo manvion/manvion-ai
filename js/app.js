@@ -517,6 +517,16 @@ window.onload = () => {
     setLanguage(localStorage.getItem('lang') || 'en');
     initSpace();
     initMotion();
+
+    // Fade scroll indicator out when user starts scrolling
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) {
+        window.addEventListener('scroll', () => {
+            const opacity = Math.max(0, 1 - window.scrollY / 200);
+            scrollIndicator.style.opacity = opacity;
+            scrollIndicator.style.pointerEvents = opacity < 0.1 ? 'none' : 'auto';
+        }, { passive: true });
+    }
     
     // Proactive engagement trigger
     setTimeout(() => {
