@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manvion | Intelligent AI Automation & Recruitment</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body class="dark-theme">
+    <div id="canvas-container"></div>
+
+    <nav class="premium-nav">
+        <div class="logo">Manvion <span class="ai-text">AI</span></div>
+        <div class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#demo">Demo</a>
+            <a href="#process">Process</a>
+            <a href="#results">Results</a>
+            <a href="#careers">Careers</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <button class="nav-cta" onclick="openChat('nav')">Deploy Systems</button>
+    </nav>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="hero-wrapper">
+                <div class="status-pill slide-up">
+                    <span class="live-dot"></span> System Neural Net Online
+                </div>
+                <h1 class="slide-up">Scale Your Business with <br><i class="gradient-text">Intelligent AI.</i></h1>
+                <p class="slide-up delay-1">Manvion engineers bespoke neural networks and autonomous agents that automate complex operations, drive unprecedented revenue, and source elite talent while you sleep.</p>
+                
+                <div class="cta-group slide-up delay-2">
+                    <button class="btn-primary glow-fx" onclick="openChat('hero')">Get Free AI Strategy</button>
+                    <button class="btn-secondary" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">Explore Architecture</button>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="mouse"></div>
+                <span>Scroll</span>
+            </div>
+        </section>
+
+        <!-- HYPER-STREAMLINED SERVICES -->
+        <section id="services" class="ecosystem-section">
+            <div class="section-head reveal-text">
+                <h2>The Manvion Ecosystem</h2>
+                <p>Deploy hyper-specialized AI components mapped to your exact operational bottlenecks.</p>
+            </div>
+
+            <div class="service-categories">
+                
+                <!-- PILLAR 1: CORE -->
+                <div class="category-block">
+                    <div class="cat-header">
+                        <div class="cat-indicator core-orb"></div>
+                        <h3>Core AI Operations</h3>
+                    </div>
+                    <div class="service-grid">
+                        <div class="s-card">
+                            <h5>AI Automation</h5>
+                            <p>Stop doing repetitive tasks. We build AI that handles your daily manual work so your team can focus on growth.</p>
+                        </div>
+                        <div class="s-card">
+                            <h5>Custom AI Models</h5>
+                            <p>We train secure AI specifically on your company's data to solve your unique business problems.</p>
+                        </div>
+                        <div class="s-card">
+                            <h5>AI Voice & Chatbots</h5>
+                            <p>Give your customers 24/7 instant support and capture new sales leads even while you sleep.</p>
+                        </div>
+                        <div class="s-card">
+                            <h5>AI Data Insights</h5>
+                            <p>Turn confusing spreadsheets into clear answers. Our AI finds hidden revenue opportunities in your existing data.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PILLAR 2: ADVANCED SCALING -->
+                <div class="category-block mt-huge">
+                    <div class="cat-header">
+                        <div class="cat-indicator sim-orb"></div>
+                        <h3>Scaling & Integration</h3>
+                    </div>
+                    <div class="service-grid">
+                        <div class="s-card">
+                            <h5>Scalable AI Systems</h5>
+                            <p>As your business grows, your AI grows with it. Handle 10x the volume without hiring 10x the staff.</p>
+                        </div>
+                        <div class="s-card">
+                            <h5>Workflow Optimization</h5>
+                            <p>We find the bottlenecks slowing your business down and replace them with smooth, error-free AI workflows.</p>
+                        </div>
+                        <div class="s-card">
+                            <h5>AI Integration Hub</h5>
+                            <p>Stop jumping between different software. We connect your CRM, emails, and tools into one simple system.</p>
+                        </div>
+                        <div class="s-card">
+                            <h5>AI Strategy & Advisory</h5>
+                            <p>Not sure where to start with AI? We guide business owners step-by-step on how to adopt AI successfully.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PILLAR 3: RECRUITMENT -->
+                <div class="category-block mt-huge">
+                    <div class="cat-header">
+                        <div class="cat-indicator rec-orb"></div>
+                        <h3>Smart Hiring Solutions</h3>
+                    </div>
+                    <div class="service-grid">
+                        <div class="s-card highlight">
+                            <h5>AI Talent Sourcing</h5>
+                            <p>Stop waiting for applications. Our AI automatically finds and reaches out to the exact talent you need.</p>
+                        </div>
+                        <div class="s-card highlight">
+                            <h5>Smart Resume Screening</h5>
+                            <p>Instantly filter hundreds of resumes. Our AI ranks the best candidates so you only interview the top matches.</p>
+                        </div>
+                        <div class="s-card highlight">
+                            <h5>Automated First Interviews</h5>
+                            <p>Save hours of time. Our AI conducts the first round of interviews to ensure candidates fit your exact requirements.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3. AI DEMO SECTION -->
+        <section id="demo" class="demo-section">
+            <div class="demo-container">
+                <div class="demo-copy">
+                    <h2>See AI in Action</h2>
+                    <p>Experience the precision of the Manvion neural engine. Our agents qualify, nurture, and close leads autonomously without human intervention.</p>
+                    <button class="btn-primary" onclick="openChat('demo')">Initiate Simulation</button>
+                </div>
+                <div class="demo-ui glass-card">
+                    <div class="ui-header"><div class="dots"><span></span><span></span><span></span></div> Live Session</div>
+                    <div class="ui-body">
+                        <div class="chat-row user">"We're wasting 40 hours a week on manual data entry."</div>
+                        <div class="chat-row ai">Acknowledged. Deploying Business Process Automation.</div>
+                        <div class="chat-row ai">Expected ROI: <strong>$85k/yr saved.</strong> Would you like the deployment roadmap?</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. PROCESS SECTION (ENRICHED) -->
+        <section id="process" class="process-section">
+            <div class="section-head reveal-text">
+                <h2>The Integration Protocol</h2>
+                <p>We do not just hand you software. We architect seamless integrations that fit your exact structure without breaking existing workflows.</p>
+            </div>
+            <div class="timeline">
+                <div class="t-step glass-card">
+                    <span class="step-num">Phase 01</span>
+                    <h4>Deep Audit</h4>
+                    <p>We analyze your current tech stack and identity the exact operational bottlenecks draining your capital.</p>
+                </div>
+                <div class="t-step glass-card">
+                    <span class="step-num">Phase 02</span>
+                    <h4>Custom Build</h4>
+                    <p>Engineering bespoke agentic workflows and LLM logic isolated to your private company data.</p>
+                </div>
+                <div class="t-step glass-card">
+                    <span class="step-num">Phase 03</span>
+                    <h4>Secure Deployment</h4>
+                    <p>Seamless CI/CD integration. We launch the AI parallel to your human team to ensure zero downtime.</p>
+                </div>
+                <div class="t-step glass-card">
+                    <span class="step-num">Phase 04</span>
+                    <h4>Elastic Scaling</h4>
+                    <p>As the AI proves its ROI, we open the throttle, allowing the autonomous systems to handle 10x the load.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. RESULTS SECTION (ENRICHED) -->
+        <section id="results" class="results-section">
+            <div class="results-wrapper">
+                <h2>Algorithm Validation</h2>
+                <div class="metrics-grid">
+                    <div class="metric glass-card">
+                        <div class="m-val"><h3 class="count" data-val="300">0</h3><span>%</span></div>
+                        <p>Average Year 1 ROI</p>
+                        <div class="m-sub">Based on 50+ enterprise integrations.</div>
+                    </div>
+                    <div class="metric glass-card">
+                        <div class="m-val"><h3 class="count" data-val="70">0</h3><span>%</span></div>
+                        <p>Time Saved Automatically</p>
+                        <div class="m-sub">Reduction in manual data entry.</div>
+                    </div>
+                    <div class="metric glass-card">
+                        <div class="m-val"><h3 class="count" data-val="10">0</h3><span>x</span></div>
+                        <p>Pipeline Value Growth</p>
+                        <div class="m-sub">From automated outbound sourcing.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. CAREERS SECTION -->
+        <section id="careers" class="careers-section">
+            <div class="section-head reveal-text">
+                <h2>Join The Intelligence</h2>
+                <p>We are scaling rapidly. Build the autonomous systems that will define the next decade of enterprise operations.</p>
+            </div>
+            <div class="careers-grid" style="max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2.5rem;">
+                <div class="role-card glass-card">
+                    <div class="role-badge">Engineering</div>
+                    <h3>Senior AI Architect</h3>
+                    <p>Design and deploy isolated LLM environments and multi-agent systems for Fortune 500 clients.</p>
+                    <div class="role-meta" style="border-top: none; padding-top: 0; margin-bottom: 1.5rem;">
+                        <span>Remote (Global)</span>
+                    </div>
+                    <button class="btn-primary glow-fx" onclick="openApplyModal('Senior AI Architect')">Apply with Resume</button>
+                </div>
+                <div class="role-card glass-card">
+                    <div class="role-badge highlight-badge">Product</div>
+                    <h3>Technical Automation Manager</h3>
+                    <p>Audit massive enterprise workflows and script their translation into autonomous execution engines.</p>
+                    <div class="role-meta" style="border-top: none; padding-top: 0; margin-bottom: 1.5rem;">
+                        <span>Remote (Global)</span>
+                    </div>
+                    <button class="btn-primary glow-fx" onclick="openApplyModal('Technical Automation Manager')">Apply with Resume</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. CONTACT / FORM SECTION -->
+        <section id="contact" class="contact-section">
+            <div class="contact-wrapper glass-card">
+                <h2>Initiate Deployment</h2>
+                <p>Submit your operational parameters below. Our database will instantly log your request, trigger a confirmation email to you, and alert our engineering team.</p>
+                <form id="main-contact-form" onsubmit="handleContactSubmit(event)">
+                    <div class="form-grid">
+                        <input type="text" id="c-name" placeholder="Full Name" required>
+                        <input type="email" id="c-email" placeholder="Corporate Email" required>
+                        <input type="text" id="c-company" placeholder="Company Name" required>
+                        <select id="c-service" required class="glass-select">
+                            <option value="">Select Primary Interest...</option>
+                            <option value="AI Automation">AI Automation</option>
+                            <option value="Smart Hiring">Smart Hiring Solutions</option>
+                            <option value="System Integration">System Integration</option>
+                        </select>
+                    </div>
+                    <textarea id="c-message" placeholder="Describe your operational bottleneck..." rows="4" required></textarea>
+                    <button type="submit" class="btn-primary w-100 mt">Initiate Deployment</button>
+                    <div id="form-status" style="margin-top:15px; text-align:center; font-family:monospace; color:#00ff66;"></div>
+                </form>
+            </div>
+        </section>
+
+        <!-- 7. FINAL CTA SECTION -->
+        <section id="cta" class="cta-section">
+            <div class="cta-box glass-card">
+                <h2>Transform Your Business with AI Today.</h2>
+                <p>Your competitors are already integrating these systems. Do not get left behind.</p>
+                <button class="btn-mega glow-fx" onclick="openChat('final')">Talk to AI Expert</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- 8. FOOTER -->
+    <footer>
+        <div class="f-wrapper">
+            <div class="f-brand">
+                <h3>Manvion <span class="ai-text">AI</span></h3>
+                <p>The apex framework for enterprise automation and intelligent talent acquisition.</p>
+            </div>
+            <div class="f-links">
+                <a href="#services">Ecosystem</a>
+                <a href="#process">Protocol</a>
+                <a href="#" onclick="openChat('hero')">Contact</a>
+            </div>
+        </div>
+        <div class="f-copy">&copy; 2026 Manvion. All rights strictly reserved.</div>
+    </footer>
+
+    <!-- PRIMARY FEATURE: AI CHATBOT SYSTEM -->
+    <div id="side-chat">
+        <div class="chat-header">
+            <div class="bot-profile pulse-border"><img src="https://api.dicebear.com/7.x/bottts/svg?seed=ManvionAI&backgroundColor=transparent" alt="AI"></div>
+            <div class="bot-meta">
+                <span class="b-name">Manvion AI</span>
+                <span class="b-status">● Live Synthesizing</span>
+            </div>
+            <button class="close-btn" onclick="closeChat()">×</button>
+        </div>
+        <div class="chat-window" id="chat-messages"></div>
+        <div class="chat-input-box">
+            <input type="text" id="chat-input" placeholder="Transmit query..." onkeypress="handleEnter(event)">
+            <button onclick="sendMessage()">⮞</button>
+        </div>
+    </div>
+
+    <!-- STICKY BUTTON -->
+    <button id="floating-chat-btn" class="glow-fx" onclick="openChat('organic')">Talk to AI Expert</button>
+
+    <!-- EXIT INTENT MODAL -->
+    <div id="exit-modal" class="modal-overlay">
+        <div class="modal-card">
+            <h3 class="gradient-text">Wait! Get Your Free AI Strategy</h3>
+            <p>You're leaving without knowing how much capital AI could save you. Let us build a custom roadmap.</p>
+            <form id="exit-form" onsubmit="handleExitForm(event)">
+                <input type="text" id="exit-name" placeholder="Full Name" required>
+                <input type="email" id="exit-email" placeholder="Corporate Email" required>
+                <input type="tel" id="exit-phone" placeholder="Phone Number" required>
+                <input type="text" id="exit-company" placeholder="Company Name" required>
+                <input type="text" id="exit-needs" placeholder="Operational Bottleneck" required>
+                <button type="submit" class="btn-primary w-100 mt">Unlock Roadmap</button>
+            </form>
+            <button class="dismiss-btn" onclick="closeExitModal()">Dismiss System</button>
+        </div>
+    </div>
+
+    <!-- APPLY MODAL -->
+    <div id="apply-modal" class="modal-overlay">
+        <div class="modal-card">
+            <h3 class="gradient-text">Submit Application</h3>
+            <p id="apply-role-name" style="margin-bottom: 1.5rem; color: var(--neon-blue); font-weight: bold;"></p>
+            <form id="apply-form" onsubmit="handleApplySubmit(event)">
+                <input type="text" id="a-name" placeholder="Full Name" required style="width: 100%; margin-bottom: 1rem; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 8px; color: white;">
+                <input type="email" id="a-email" placeholder="Email Address" required style="width: 100%; margin-bottom: 1rem; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 8px; color: white;">
+                <input type="file" id="a-resume" accept=".pdf,.doc,.docx" required style="padding: 1.5rem; margin-bottom: 1rem; width: 100%; border: 1px dashed var(--neon-blue); background: rgba(0,243,255,0.05); border-radius: 8px; color: white;">
+                <button type="submit" class="btn-primary w-100 mt">Upload & Send Resume</button>
+                <div id="apply-status" style="margin-top:15px; text-align:center; font-family:monospace; color:#00ff66;"></div>
+            </form>
+            <button class="dismiss-btn" onclick="closeApplyModal()">Cancel</button>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
