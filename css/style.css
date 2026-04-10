@@ -55,7 +55,7 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; outlin
 .status-pill { display: inline-flex; align-items: center; gap: 10px; background: rgba(0,229,255,0.05); border: 1px solid rgba(0,229,255,0.2); padding: 0.5rem 1rem; border-radius: 30px; color: var(--neon-blue); font-family: monospace; font-size: 0.9rem; margin-bottom: 2rem; }
 .live-dot { width: 8px; height: 8px; background: var(--neon-blue); border-radius: 50%; box-shadow: 0 0 10px var(--neon-blue); animation: blink 1.5s infinite; }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
-.hero-wrapper h1 { font-size: clamp(3.5rem, 8vw, 6.5rem); line-height: 1.05; margin-bottom: 1.5rem; letter-spacing: -2px; }
+.hero-wrapper h1 { font-size: clamp(3.5rem, 8vw, 6.5rem); line-height: 1.05; margin-bottom: 1.5rem; letter-spacing: -2px; overflow-wrap: break-word; word-break: break-word; }
 .hero-wrapper p { font-size: 1.3rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 3rem; }
 .cta-group { display: flex; gap: 1.5rem; justify-content: center; }
 
@@ -267,155 +267,191 @@ footer { padding: 4rem 5% 2rem; border-top: 1px solid var(--glass-border); }
 @media (max-width: 768px) {
     /* Nav */
     .nav-links { display: none; }
-    .premium-nav { padding: 1rem 4%; gap: 0.75rem; }
-    .logo { font-size: 1.5rem; letter-spacing: 2px; }
-    .nav-cta { padding: 0.6rem 1.2rem; font-size: 0.8rem; letter-spacing: 0; }
+    .premium-nav { padding: 1rem 4%; gap: 0.5rem; }
+    .logo { font-size: 1.45rem; letter-spacing: 2px; }
+    .nav-cta { padding: 0.55rem 1rem; font-size: 0.78rem; letter-spacing: 0; }
+    .nav-right { gap: 0.5rem; }
 
-    /* Hero */
-    .hero-section { padding: 0 5%; }
-    .hero-wrapper { margin-top: 7rem; }
-    .hero-wrapper h1 { font-size: clamp(2.6rem, 9vw, 3.4rem); letter-spacing: -1px; }
-    .hero-wrapper p { font-size: 1.05rem; margin-bottom: 2.5rem; line-height: 1.7; }
-    .cta-group { flex-direction: column; align-items: center; gap: 1.2rem; }
+    /* Hero — key fix: smaller font + allow wrap gracefully */
+    .hero-section { padding: 0 6%; min-height: 100svh; }
+    .hero-wrapper { margin-top: 6rem; }
+    .hero-wrapper h1 {
+        font-size: clamp(2.2rem, 7.5vw, 3.2rem);
+        letter-spacing: -0.5px;
+        line-height: 1.08;
+        overflow-wrap: break-word;
+        word-break: break-word;
+    }
+    .hero-wrapper p { font-size: 1rem; margin-bottom: 2rem; line-height: 1.7; }
+    .cta-group { flex-direction: column; align-items: center; gap: 1rem; }
     .cta-group .btn-primary,
-    .cta-group .btn-secondary { width: 100%; max-width: 340px; font-size: 1rem; padding: 1rem 2rem; }
+    .cta-group .btn-secondary { width: 100%; max-width: 320px; font-size: 1rem; padding: 0.95rem 1.8rem; }
+    .scroll-indicator { bottom: 24px; }
 
     /* Sections */
-    .ecosystem-section,
+    .ecosystem-section { padding: 5rem 4%; }
     .demo-section,
     .process-section,
     .results-section,
-    .careers-section { padding: 6rem 5%; }
-    .section-head { margin-bottom: 3.5rem; }
-    .section-head h2 { font-size: 2.6rem; }
-    .section-head p { font-size: 1.05rem; line-height: 1.7; }
-    .mt-huge { margin-top: 4rem; }
+    .careers-section { padding: 5rem 4%; }
+    .section-head { margin-bottom: 2.8rem; }
+    .section-head h2 { font-size: 2.2rem; }
+    .section-head p { font-size: 1rem; line-height: 1.7; }
+    .mt-huge { margin-top: 3rem; }
+    .mt-large { margin-top: 2.5rem; }
 
     /* Services */
-    .service-grid { grid-template-columns: 1fr; gap: 1.2rem; }
-    .s-card { padding: 2rem; }
-    .s-card h5 { font-size: 1.25rem; margin-bottom: 0.6rem; }
-    .s-card p { font-size: 0.95rem; line-height: 1.6; }
-    .cat-header h3 { font-size: 1.5rem; }
-    .cat-header { margin-bottom: 1.5rem; }
+    .service-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .s-card { padding: 1.6rem; }
+    .s-card h5 { font-size: 1.15rem; margin-bottom: 0.5rem; }
+    .s-card p { font-size: 0.92rem; line-height: 1.6; }
+    .s-icon { font-size: 1.6rem; margin-bottom: 0.75rem; }
+    .cat-header h3 { font-size: 1.3rem; }
+    .cat-header { margin-bottom: 1.2rem; }
 
     /* Demo */
-    .demo-copy h2 { font-size: 2.6rem; }
-    .demo-copy p { font-size: 1.05rem; }
+    .demo-copy h2 { font-size: 2.2rem; }
+    .demo-copy p { font-size: 1rem; }
 
     /* Process */
-    .t-step { padding: 2rem; }
-    .t-step h4 { font-size: 1.4rem; }
-    .t-step p { font-size: 0.95rem; line-height: 1.6; }
+    .t-step { padding: 1.8rem; }
+    .t-step h4 { font-size: 1.3rem; }
+    .t-step p { font-size: 0.92rem; line-height: 1.6; }
 
     /* Results */
-    .results-wrapper h2 { font-size: 2.6rem; margin-bottom: 3rem; }
-    .metrics-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; gap: 1.5rem; }
-    .metric { padding: 2.5rem; }
-    .metric h3 { font-size: 4rem; }
-    .metric span { font-size: 2.2rem; }
-    .metric p { font-size: 1.05rem; }
+    .results-wrapper h2 { font-size: 2.2rem; margin-bottom: 2.5rem; }
+    .metrics-grid { grid-template-columns: 1fr; max-width: 380px; margin: 0 auto; gap: 1.2rem; }
+    .metric { padding: 2rem; }
+    .metric h3 { font-size: 3.8rem; }
+    .metric span { font-size: 2rem; }
+    .metric p { font-size: 1rem; }
 
     /* CTA */
-    .cta-section { padding: 3rem 5% 6rem; }
-    .cta-box { padding: 3.5rem 2rem; }
-    .cta-box h2 { font-size: 2.6rem; }
-    .cta-box p { font-size: 1.05rem; }
+    .cta-section { padding: 2.5rem 4% 5rem; }
+    .cta-box { padding: 3rem 1.8rem; }
+    .cta-box h2 { font-size: 2.2rem; }
+    .cta-box p { font-size: 1rem; }
     .btn-mega { font-size: 1rem; padding: 1rem 2rem; }
 
     /* Careers */
-    .careers-section { padding: 6rem 5%; }
+    .careers-section { padding: 5rem 4%; }
     .careers-grid { grid-template-columns: 1fr !important; min-width: 0; }
-    .role-card { padding: 2.2rem; }
-    .role-card h3 { font-size: 1.7rem; }
-    .role-card p { font-size: 0.95rem; }
+    .role-card { padding: 2rem; }
+    .role-card h3 { font-size: 1.6rem; }
+    .role-card p { font-size: 0.93rem; }
 
     /* Trust Bar */
-    .trust-item { padding: 1.2rem 1.5rem; }
-    .trust-num { font-size: 1.8rem; }
-    .trust-sep { height: 30px; }
+    .trust-item { padding: 1rem 1.2rem; }
+    .trust-num { font-size: 1.7rem; }
+    .trust-sep { height: 28px; }
 
     /* FAQ */
-    .faq-section { padding: 6rem 5%; }
-    .faq-q { padding: 1.4rem 1.5rem; font-size: 1rem; }
-    .faq-a p { padding: 0 1.5rem 1.4rem; }
+    .faq-section { padding: 5rem 4%; }
+    .faq-q { padding: 1.3rem 1.4rem; font-size: 0.97rem; }
+    .faq-a p { padding: 0 1.4rem 1.3rem; }
 
     /* Contact */
-    .contact-section { padding: 4rem 5% 6rem; }
-    .contact-wrapper { padding: 2.5rem 2rem; }
-    .contact-wrapper h2 { font-size: 2.4rem; }
-    .contact-wrapper p { font-size: 1rem; }
-    .form-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+    .contact-section { padding: 3rem 4% 5rem; }
+    .contact-wrapper { padding: 2.2rem 1.8rem; }
+    .contact-wrapper h2 { font-size: 2rem; }
+    .contact-wrapper p { font-size: 0.97rem; }
+    .form-grid { grid-template-columns: 1fr; gap: 1rem; }
     #main-contact-form .btn-primary { width: 100%; }
 
     /* Footer */
     .f-wrapper { flex-direction: column; gap: 2rem; margin-bottom: 2rem; }
-    .f-brand h3 { font-size: 1.8rem; }
-    .f-brand p { font-size: 0.9rem; }
+    .f-brand h3 { font-size: 1.7rem; }
+    .f-brand p { font-size: 0.88rem; }
     .f-copy { font-size: 0.8rem; }
 
     /* Chat */
-    #floating-chat-btn { padding: 1rem 1.8rem; font-size: 0.9rem; bottom: 20px; right: 20px; }
-    #side-chat { width: 92%; right: 4%; bottom: 2%; height: 85vh; }
+    #floating-chat-btn { padding: 0.9rem 1.6rem; font-size: 0.88rem; bottom: 18px; right: 18px; }
+    #side-chat { width: 93%; right: 3.5%; bottom: 2%; height: 88vh; max-height: 90svh; }
 
     /* Modal */
-    .modal-card { padding: 2.5rem 1.5rem; }
-    .modal-card h3 { font-size: 1.8rem; }
+    .modal-card { padding: 2.2rem 1.4rem; }
+    .modal-card h3 { font-size: 1.7rem; }
 }
 
 @media (max-width: 480px) {
-    /* Nav — hide CTA button, keep logo + lang */
+    /* Nav — hide CTA, keep logo + controls */
     .nav-cta { display: none; }
-    .logo { font-size: 1.4rem; letter-spacing: 1px; }
-    .lang-toggle { padding: 0.35rem 0.7rem; font-size: 0.75rem; }
+    .logo { font-size: 1.3rem; letter-spacing: 1px; }
+    .lang-toggle { padding: 0.3rem 0.65rem; font-size: 0.75rem; }
+    .theme-toggle { width: 30px; height: 30px; font-size: 0.85rem; }
+    .premium-nav { padding: 0.85rem 4%; }
 
-    /* Hero */
-    .hero-wrapper { margin-top: 6.5rem; }
-    .hero-wrapper h1 { font-size: clamp(2.2rem, 9vw, 2.8rem); }
-    .hero-wrapper p { font-size: 0.95rem; }
-    .status-pill { font-size: 0.8rem; padding: 0.4rem 0.8rem; }
+    /* Hero — key fix: use vw-only in this range so it always fits */
+    .hero-wrapper { margin-top: 5.5rem; }
+    .hero-wrapper h1 {
+        font-size: clamp(1.9rem, 8.5vw, 2.6rem);
+        letter-spacing: 0px;
+        line-height: 1.1;
+    }
+    .hero-wrapper p { font-size: 0.93rem; line-height: 1.65; }
+    .status-pill { font-size: 0.78rem; padding: 0.38rem 0.75rem; gap: 7px; }
+    .live-dot { width: 7px; height: 7px; }
 
     /* Sections */
     .ecosystem-section,
     .demo-section,
     .process-section,
     .results-section,
-    .careers-section { padding: 5rem 5%; }
-    .section-head h2 { font-size: 2.2rem; }
+    .careers-section { padding: 4rem 4%; }
+    .section-head h2 { font-size: 1.9rem; }
     .demo-copy h2,
     .results-wrapper h2,
     .cta-box h2,
-    .contact-wrapper h2 { font-size: 2.2rem; }
+    .contact-wrapper h2 { font-size: 1.9rem; }
+
+    /* Services */
+    .s-card { padding: 1.4rem; }
+    .s-card h5 { font-size: 1.08rem; }
+    .mt-large { margin-top: 2rem; }
 
     /* Results */
-    .metric h3 { font-size: 3.5rem; }
-    .metric span { font-size: 1.8rem; }
+    .metric h3 { font-size: 3.2rem; }
+    .metric span { font-size: 1.6rem; }
 
     /* CTA */
-    .cta-box { padding: 3rem 1.5rem; }
+    .cta-box { padding: 2.5rem 1.2rem; }
+    .cta-section { padding: 2rem 4% 4rem; }
+    .cta-box h2 { font-size: 1.9rem; }
 
     /* Contact */
-    .contact-wrapper { padding: 2rem 1.5rem; }
-    .contact-section { padding: 3rem 5% 5rem; }
+    .contact-wrapper { padding: 1.8rem 1.2rem; }
+    .contact-section { padding: 2.5rem 4% 4.5rem; }
 
     /* Trust Bar */
     .trust-bar { flex-wrap: wrap; }
     .trust-sep { display: none; }
-    .trust-item { padding: 1rem 1.5rem; width: 50%; }
-    .trust-num { font-size: 1.6rem; }
+    .trust-item { padding: 0.9rem 1.2rem; width: 50%; }
+    .trust-num { font-size: 1.5rem; }
+    .trust-label { font-size: 0.75rem; }
 
     /* FAQ */
-    .faq-section { padding: 5rem 5%; }
-    .faq-q { padding: 1.2rem; font-size: 0.95rem; }
-    .faq-a p { padding: 0 1.2rem 1.2rem; font-size: 0.9rem; }
+    .faq-section { padding: 4rem 4%; }
+    .faq-q { padding: 1.1rem; font-size: 0.92rem; }
+    .faq-a p { padding: 0 1.1rem 1.1rem; font-size: 0.88rem; }
 
     /* Modal */
-    .modal-card { padding: 2rem 1.2rem; }
-    .modal-card h3 { font-size: 1.5rem; }
+    .modal-card { padding: 1.8rem 1rem; }
+    .modal-card h3 { font-size: 1.4rem; }
 
     /* Chat */
-    #side-chat { width: 96%; right: 2%; }
-    #floating-chat-btn { right: 16px; bottom: 16px; padding: 0.85rem 1.5rem; }
+    #side-chat { width: 97%; right: 1.5%; bottom: 1%; }
+    #floating-chat-btn { right: 14px; bottom: 14px; padding: 0.8rem 1.4rem; font-size: 0.85rem; }
+}
+
+@media (max-width: 360px) {
+    .hero-wrapper h1 { font-size: clamp(1.7rem, 9vw, 2rem); }
+    .logo { font-size: 1.15rem; letter-spacing: 0.5px; }
+    .section-head h2,
+    .demo-copy h2,
+    .results-wrapper h2,
+    .cta-box h2,
+    .contact-wrapper h2 { font-size: 1.7rem; }
+    .s-card h5 { font-size: 1rem; }
 }
 
 /* ═══════════════════════════════════════════
