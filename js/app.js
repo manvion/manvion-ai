@@ -11,116 +11,150 @@ const API_BASE_URL = '';
 ----------------------------------------- */
 const translations = {
     en: {
-        nav_services:'Services', nav_demo:'Demo', nav_process:'Process', nav_results:'Results', nav_careers:'Careers', nav_contact:'Contact', nav_cta:'Deploy Systems',
-        hero_status:'System Neural Net Online',
-        hero_h1:'Scale Your Business with <br><i class="gradient-text">Intelligent AI.</i>',
-        hero_p:'Manvion engineers bespoke neural networks and autonomous agents that automate complex operations, drive unprecedented revenue, and source elite talent while you sleep.',
-        hero_btn1:'Get Free AI Strategy', hero_btn2:'Explore Architecture',
-        services_h2:'The Manvion Ecosystem', services_p:'Deploy hyper-specialized AI components mapped to your exact operational bottlenecks.',
-        core_h3:'Core AI Operations',
-        core1_h5:'AI Automation', core1_p:'Stop doing repetitive tasks. We build AI that handles your daily manual work so your team can focus on growth.',
-        core2_h5:'Custom AI Models', core2_p:"We train secure AI specifically on your company's data to solve your unique business problems.",
-        core3_h5:'AI Voice & Chatbots', core3_p:'Give your customers 24/7 instant support and capture new sales leads even while you sleep.',
-        core4_h5:'AI Data Insights', core4_p:'Turn confusing spreadsheets into clear answers. Our AI finds hidden revenue opportunities in your existing data.',
-        scaling_h3:'Scaling & Integration',
-        scal1_h5:'Scalable AI Systems', scal1_p:'As your business grows, your AI grows with it. Handle 10x the volume without hiring 10x the staff.',
-        scal2_h5:'Workflow Optimization', scal2_p:'We find the bottlenecks slowing your business down and replace them with smooth, error-free AI workflows.',
-        scal3_h5:'AI Integration Hub', scal3_p:'Stop jumping between different software. We connect your CRM, emails, and tools into one simple system.',
-        scal4_h5:'AI Strategy & Advisory', scal4_p:'Not sure where to start with AI? We guide business owners step-by-step on how to adopt AI successfully.',
-        hiring_h3:'Smart Hiring Solutions',
-        hire1_h5:'AI Talent Sourcing', hire1_p:'Stop waiting for applications. Our AI automatically finds and reaches out to the exact talent you need.',
-        hire2_h5:'Smart Resume Screening', hire2_p:'Instantly filter hundreds of resumes. Our AI ranks the best candidates so you only interview the top matches.',
-        hire3_h5:'Automated First Interviews', hire3_p:'Save hours of time. Our AI conducts the first round of interviews to ensure candidates fit your exact requirements.',
-        demo_h2:'See AI in Action', demo_p:'Experience the precision of the Manvion neural engine. Our agents qualify, nurture, and close leads autonomously without human intervention.', demo_btn:'Initiate Simulation',
-        demo_chat1:'"We\'re wasting 40 hours a week on manual data entry."', demo_chat2:'Acknowledged. Deploying Business Process Automation.', demo_chat3:'Expected ROI: <strong>$85k/yr saved.</strong> Would you like the deployment roadmap?',
-        process_h2:'The Integration Protocol', process_p:'We do not just hand you software. We architect seamless integrations that fit your exact structure without breaking existing workflows.',
-        phase1_num:'Phase 01', phase1_h4:'Deep Audit', phase1_p:'We analyze your current tech stack and identify the exact operational bottlenecks draining your capital.',
-        phase2_num:'Phase 02', phase2_h4:'Custom Build', phase2_p:'Engineering bespoke agentic workflows and LLM logic isolated to your private company data.',
-        phase3_num:'Phase 03', phase3_h4:'Secure Deployment', phase3_p:'Seamless CI/CD integration. We launch the AI parallel to your human team to ensure zero downtime.',
-        phase4_num:'Phase 04', phase4_h4:'Elastic Scaling', phase4_p:'As the AI proves its ROI, we open the throttle, allowing the autonomous systems to handle 10x the load.',
-        results_h2:'Algorithm Validation',
-        metric1_p:'Average Year 1 ROI', metric1_sub:'Based on 50+ enterprise integrations.',
-        metric2_p:'Time Saved Automatically', metric2_sub:'Reduction in manual data entry.',
-        metric3_p:'Pipeline Value Growth', metric3_sub:'From automated outbound sourcing.',
-        careers_h2:'Join The Intelligence', careers_p:'We are scaling rapidly. Build the autonomous systems that will define the next decade of enterprise operations.',
-        job1_badge:'Engineering', job1_h3:'Senior AI Architect', job1_p:'Design and deploy isolated LLM environments and multi-agent systems for Fortune 500 clients.', job1_loc:'Remote (Global)', job1_btn:'Apply with Resume',
-        job2_badge:'Product', job2_h3:'Technical Automation Manager', job2_p:'Audit massive enterprise workflows and script their translation into autonomous execution engines.', job2_loc:'Remote (Global)', job2_btn:'Apply with Resume',
-        contact_h2:'Initiate Deployment', contact_p:'Submit your operational parameters below. Our database will instantly log your request and alert our engineering team.',
-        contact_ph_name:'Full Name', contact_ph_email:'Corporate Email', contact_ph_company:'Company Name',
-        contact_opt0:'Select Primary Interest...', contact_opt1:'AI Automation', contact_opt2:'Smart Hiring Solutions', contact_opt3:'System Integration',
-        contact_ph_msg:'Describe your operational bottleneck...', contact_btn:'Initiate Deployment',
-        cta_h2:'Transform Your Business with AI Today.', cta_p:'Your competitors are already integrating these systems. Do not get left behind.', cta_btn:'Talk to AI Expert',
-        footer_p:'The apex framework for enterprise automation and intelligent talent acquisition.', footer_nav_heading:'Navigation', footer_link1:'Ecosystem', footer_link2:'Protocol', footer_link3:'Contact', footer_contact_heading:'Contact', footer_location:'Montreal, QC, Canada', footer_copy:'© 2026 Manvion. All rights strictly reserved.',
-        chat_status:'● Live Synthesizing', chat_ph:'Transmit query...',
-        exit_h3:'Wait! Get Your Free AI Strategy', exit_p:"You're leaving without knowing how much capital AI could save you. Let us build a custom roadmap.",
-        exit_ph_name:'Full Name', exit_ph_email:'Corporate Email', exit_ph_phone:'Phone Number', exit_ph_company:'Company Name', exit_ph_needs:'Operational Bottleneck',
-        exit_btn:'Unlock Roadmap', exit_dismiss:'Dismiss System',
-        apply_h3:'Submit Application', apply_ph_name:'Full Name', apply_ph_email:'Email Address', apply_btn:'Upload & Send Resume', apply_dismiss:'Cancel',
-        chat_welcome:"Hi, I'm Manvion AI. How can I help you scale your business today? (e.g. Sales, Hiring, Automation)",
-        chat_suggest: s => `Analyzing... Based on your goal, I recommend our **${s}**. To build your custom profile, what is your full name?`,
-        chat_ask_email: n => `Great to meet you, ${n}. What is the best email to send your AI implementation strategy to?`,
-        chat_bad_email:'Please provide a valid email address so I can route your strategy document.',
-        chat_ask_company:'Got it. What is the name of your company?',
-        chat_ask_req:'Awesome. Final question: What is your primary requirement or biggest operational bottleneck right now?',
-        chat_thanks:'Thank you! Data synthesized. Our human AI team will contact you within 24 hours to initiate deployment.',
-        chat_done:'I have logged this session to your CRM file. Feel free to explore the architecture behind this window.',
+        nav_services:'Services', nav_demo:'Demo', nav_process:'How It Works', nav_results:'Results', nav_careers:'Careers', nav_contact:'Contact', nav_cta:'Get Free Strategy',
+        hero_status:"Montreal's AI Automation Agency",
+        hero_h1:'Automate Everything.<br><i class="gradient-text">Scale Beyond Limits.</i>',
+        hero_p:"Manvion AI builds custom automation systems that handle your repetitive tasks, find top talent automatically, and grow your revenue — without adding more staff. Based in Montreal. Serving businesses worldwide.",
+        hero_btn1:'Get My Free AI Strategy', hero_btn2:'See How It Works',
+        services_h2:'Everything Your Business Needs to Automate', services_p:'AI solutions that eliminate manual work, cut costs, and free your team to focus on what actually grows your business.',
+        core_h3:'Core AI Services',
+        core1_h5:'AI Workflow Automation', core1_p:'We map your most time-consuming processes and deploy AI that executes them automatically — 24/7, without errors or delays. From data entry to complex multi-step workflows.',
+        core2_h5:'AI Built for Your Business', core2_p:"We train AI on your company data — your products, processes, and customers — to solve problems no off-the-shelf software can handle.",
+        core3_h5:'AI Voice & Chatbots', core3_p:'Deploy AI voice assistants that handle inbound calls and chatbots that qualify leads, answer questions, and book meetings — 24/7, across every channel. Every visitor and every caller, captured.',
+        core4_h5:'Turn Data Into Decisions', core4_p:"We turn your spreadsheets and raw data into clear dashboards that show you exactly where to find more revenue and where you're losing money.",
+        scaling_h3:'Growth & Integration',
+        scal1_h5:'Grow Without Hiring More Staff', scal1_p:'Handle 5x, 10x — even 50x the workload with the same team. Your AI scales as fast as your business, at a fraction of the cost of a new hire.',
+        scal2_h5:'Eliminate Wasted Time', scal2_p:"We map your entire workflow, find what's costing you hours every week, and replace it with fast, error-free AI processes that never call in sick.",
+        scal3_h5:'Connect All Your Tools', scal3_p:'Your CRM, email, calendar, and software all work together automatically. No more copy-paste between apps, no more data slipping through the cracks.',
+        scal4_h5:'AI Strategy & Guidance', scal4_p:"Not sure where AI fits your business? We've helped 50+ companies get started. We'll show you exactly where it will have the biggest impact — fast.",
+        hiring_h3:'AI-Powered Hiring',
+        hire1_h5:'Find the Right People Faster', hire1_p:'Our AI searches hundreds of platforms to identify candidates who match your exact requirements — and reaches out to them before they even apply elsewhere.',
+        hire2_h5:'Screen 200 Resumes in 2 Minutes', hire2_p:'Stop spending evenings reading CVs. Our AI shortlists only the candidates worth your time — ranked by how well they match your exact requirements.',
+        hire3_h5:'Only Interview the Best', hire3_p:'AI pre-screens applicants, scores their fit, and sends you a ranked shortlist. You only spend time with the people truly worth hiring.',
+        demo_h2:'Watch AI Solve a Real Business Problem', demo_p:'A business owner describes their problem. Our AI identifies the solution and calculates their ROI in seconds. This is exactly what we do for every client — before you spend a single dollar.', demo_btn:'Try It Yourself →',
+        demo_chat1:'"We\'re wasting 40 hours a week on manual data entry."', demo_chat2:'Understood. I can automate that entire process for you.', demo_chat3:'Estimated savings: <strong>$85,000/year.</strong> Want to see your custom roadmap?',
+        process_h2:'How We Work', process_p:'From your first call to AI running live in your business — here is our proven 4-step process. Most clients are fully live within 4 weeks.',
+        phase1_num:'Step 01', phase1_h4:'Free Discovery Call', phase1_p:'We spend 60 minutes learning how your business works and identifying exactly where AI will save you the most time and money — at no cost to you.',
+        phase2_num:'Step 02', phase2_h4:'We Build Your AI', phase2_p:'We build a tailored AI solution designed around your exact tools, team, and goals. Everything is custom-built for your business — nothing generic, nothing off-the-shelf.',
+        phase3_num:'Step 03', phase3_h4:'We Go Live Together', phase3_p:'Your AI launches alongside your current team. We handle the entire rollout — zero downtime and zero disruption to how your business runs today.',
+        phase4_num:'Step 04', phase4_h4:'It Gets Smarter Every Day', phase4_p:'Your AI learns from every interaction and continuously improves. As your business grows, your AI grows with it — handling more, costing less per task.',
+        results_h2:'Real Results From Real Clients',
+        metric1_p:'Average ROI in Year One', metric1_sub:'Across 50+ client deployments worldwide.',
+        metric2_p:'Less Manual Work', metric2_sub:'Hours freed up every week so your team can focus on growth.',
+        metric3_p:'More Pipeline Value', metric3_sub:'From AI-powered lead generation and automated outreach.',
+        trust1_num:'50+', trust1_label:'Businesses Automated',
+        trust2_num:'300%', trust2_label:'Avg. ROI in Year One',
+        trust3_num:'70%', trust3_label:'Less Manual Work',
+        trust4_num:'24h', trust4_label:'Response Guaranteed',
+        faq_h2:'Common Questions', faq_p:'Everything you need to know before getting started with AI automation.',
+        faq1_q:'What exactly does an AI automation agency do?', faq1_a:'We identify the tasks in your business that take the most time and money — data entry, scheduling, recruiting, customer support — and build AI systems that handle them automatically. Your team focuses on high-value work, your costs go down, and your output goes up.',
+        faq2_q:'How quickly will I see results?', faq2_a:'Most clients go live within 4 weeks and see measurable time savings within the first 30 days. Significant ROI — typically 2–3x their investment — usually appears within 3 to 6 months. We give you realistic timelines before we start.',
+        faq3_q:'Do I need to understand AI or be technical?', faq3_a:"Not at all. You don't need to understand how AI works — that's our job. You describe your problems and goals in plain language, and we handle everything from design to deployment. We work with business owners, not engineers.",
+        faq4_q:'Will it work with the software I already use?', faq4_a:'Yes. We connect your AI to your existing CRM, email, calendar, and any other tools — including HubSpot, Salesforce, Google Workspace, Slack, and hundreds more. We build around your workflow, not the other way around.',
+        faq5_q:'How much does it cost?', faq5_a:'Every project is scoped individually. The best first step is a free 30-minute strategy call where we learn about your business and give you a clear quote with no surprises. Most clients find their AI pays for itself within the first few months.',
+        careers_h2:'Work With Us', careers_p:'We are a fast-growing AI agency building systems that change how businesses operate. If you are exceptional at what you do, we want to work with you.',
+        job1_badge:'Engineering', job1_h3:'Senior AI Engineer', job1_p:'Build production-grade AI systems and multi-agent workflows for businesses across North America and beyond. Own your projects end to end.', job1_loc:'Remote (Global)', job1_btn:'Apply with Resume',
+        job2_badge:'Consulting', job2_h3:'Automation Consultant', job2_p:'Work directly with clients to map their workflows and design AI solutions that save them time and money. You talk to businesses, we build the systems.', job2_loc:'Remote (Global)', job2_btn:'Apply with Resume',
+        contact_h2:"Let's Talk About Your Business", contact_p:"Tell us your biggest challenge. We'll come back to you within 24 hours with a clear plan for how AI can help — at no cost.",
+        contact_ph_name:'Your Name', contact_ph_email:'Your Email', contact_ph_company:'Company Name',
+        contact_opt0:'What can we help you with?', contact_opt1:'Automate My Tasks', contact_opt2:'Improve My Hiring', contact_opt3:'Connect My Tools',
+        contact_ph_msg:"What's your biggest business challenge right now?", contact_btn:'Send My Request →',
+        cta_h2:'Ready to Save 40+ Hours a Week?', cta_p:'Join 50+ businesses in Montreal and beyond already using Manvion AI to work smarter, move faster, and grow without limits.', cta_btn:'Book a Free Strategy Call',
+        footer_p:'Turning ambitious businesses into AI-powered, self-scaling machines since 2024.', footer_nav_heading:'Navigation', footer_link1:'Services', footer_link2:'How It Works', footer_link_faq:'FAQ', footer_link3:'Contact', footer_contact_heading:'Contact', footer_location:'Montreal, QC, Canada', footer_copy:'© 2026 Manvion AI. All rights reserved.',
+        chat_status:'● Live — Ready to Help', chat_ph:'Type your question...',
+        exit_h3:'Wait — Get Your Free AI Strategy', exit_p:'Before you leave, find out how much time and money AI could save your business. It takes 2 minutes.',
+        exit_ph_name:'Your Name', exit_ph_email:'Your Email', exit_ph_phone:'Phone Number', exit_ph_company:'Company Name', exit_ph_needs:'Your Biggest Business Challenge',
+        exit_btn:'Get My Free Roadmap', exit_dismiss:'No thanks',
+        apply_h3:'Submit Your Application', apply_ph_name:'Full Name', apply_ph_email:'Email Address', apply_btn:'Upload & Send Resume', apply_dismiss:'Cancel',
+        chat_welcome:"Hi, I'm Manvion AI. What can I help you build or automate today? (e.g. Website, Voice AI, Chatbots, Hiring, Automation)",
+        chat_suggest: s => `Based on what you've shared, our **${s}** is exactly what you need. Most businesses see results within 30 days. To build your personalized strategy, what's your name?`,
+        chat_ask_email: n => `Great to meet you, ${n}! What email should I send your free AI strategy report to?`,
+        chat_bad_email:'Hmm, that email doesn\'t look right. Could you double-check it? I want to make sure your strategy lands in the right inbox.',
+        chat_ask_company:'Perfect. What company is this for?',
+        chat_ask_req:"Almost there — what's the single biggest bottleneck eating your time or revenue right now?",
+        chat_thanks:'Our team personally reviews every submission and will reach out within 24 hours with a strategy tailored specifically to your business. No templates — just a clear, custom plan.',
+        chat_done:'Feel free to explore our services and results in the meantime. You\'ll hear from us very soon.',
         svc_recruit:'AI Recruitment Solutions', svc_sales:'AI Sales Automation', svc_chat:'AI Chatbots & Agents', svc_custom:'Custom AI Workflow Optimization',
+        svc_voice:'AI Voice Assistant Solutions', svc_data:'AI Data Insights & Dashboards', svc_website:'Custom Website & Web Development',
+        contact_opt4:'Build My Website',
+        web_h3:'Web & Digital Presence',
+        web1_h5:'Custom Website Development', web1_p:'We design and build high-performance websites tailored to your brand — fast, conversion-optimized, and built to scale with your business.',
+        web2_h5:'AI-Integrated Web Applications', web2_p:'Custom web apps with AI built in from the ground up — intelligent dashboards, automation triggers, and real-time data processing baked into your platform.',
+        web3_h5:'Landing Pages & Funnels', web3_p:'High-converting landing pages and sales funnels built to capture leads and drive revenue — backed by data and tested for performance.',
+        web4_h5:'E-Commerce & Online Stores', web4_p:'End-to-end e-commerce builds with AI-powered product recommendations, inventory automation, and smart checkout flows that convert.',
     },
     fr: {
-        nav_services:'Services', nav_demo:'Démo', nav_process:'Processus', nav_results:'Résultats', nav_careers:'Carrières', nav_contact:'Contact', nav_cta:'Déployer',
-        hero_status:'Réseau Neuronal Actif',
-        hero_h1:'Développez Votre Entreprise avec <br><i class="gradient-text">l\'IA Intelligente.</i>',
-        hero_p:'Manvion conçoit des réseaux neuronaux sur mesure et des agents autonomes qui automatisent les opérations complexes, génèrent des revenus sans précédent et recrutent les meilleurs talents pendant que vous dormez.',
-        hero_btn1:'Stratégie IA Gratuite', hero_btn2:"Explorer l'Architecture",
-        services_h2:"L'Écosystème Manvion", services_p:"Déployez des composants IA ultra-spécialisés adaptés à vos goulots d'étranglement opérationnels.",
-        core_h3:'Opérations IA Principales',
-        core1_h5:'Automatisation IA', core1_p:"Arrêtez les tâches répétitives. Nous construisons une IA qui gère votre travail manuel quotidien afin que votre équipe puisse se concentrer sur la croissance.",
-        core2_h5:'Modèles IA Personnalisés', core2_p:"Nous entraînons une IA sécurisée spécifiquement sur les données de votre entreprise pour résoudre vos problèmes commerciaux uniques.",
-        core3_h5:'IA Vocale & Chatbots', core3_p:"Offrez à vos clients une assistance instantanée 24h/24 et captez de nouveaux prospects même pendant votre sommeil.",
-        core4_h5:'Analyses de Données IA', core4_p:"Transformez vos tableurs complexes en réponses claires. Notre IA détecte les opportunités de revenus cachées dans vos données existantes.",
-        scaling_h3:'Expansion & Intégration',
-        scal1_h5:'Systèmes IA Évolutifs', scal1_p:"Au fur et à mesure que votre entreprise grandit, votre IA grandit avec elle. Gérez 10x le volume sans recruter 10x plus de personnel.",
-        scal2_h5:'Optimisation des Flux', scal2_p:"Nous identifions les goulots d'étranglement qui ralentissent votre entreprise et les remplaçons par des flux de travail IA fluides.",
-        scal3_h5:"Hub d'Intégration IA", scal3_p:"Arrêtez de jongler entre différents logiciels. Nous connectons votre CRM, vos emails et vos outils en un seul système simple.",
-        scal4_h5:'Stratégie & Conseil IA', scal4_p:"Vous ne savez pas par où commencer avec l'IA ? Nous guidons les chefs d'entreprise étape par étape.",
-        hiring_h3:'Solutions de Recrutement Intelligentes',
-        hire1_h5:'Sourcing de Talents IA', hire1_p:"Arrêtez d'attendre des candidatures. Notre IA trouve et contacte automatiquement les talents exacts dont vous avez besoin.",
-        hire2_h5:'Tri Intelligent de CV', hire2_p:"Filtrez instantanément des centaines de CV. Notre IA classe les meilleurs candidats pour que vous n'interviewiez que les profils les plus adaptés.",
-        hire3_h5:'Premiers Entretiens Automatisés', hire3_p:"Économisez des heures de travail. Notre IA conduit le premier tour d'entretiens pour s'assurer que les candidats correspondent à vos exigences.",
-        demo_h2:"Voir l'IA en Action", demo_p:"Découvrez la précision du moteur neuronal Manvion. Nos agents qualifient, nourrissent et convertissent les prospects de façon autonome, sans intervention humaine.", demo_btn:'Lancer la Simulation',
-        demo_chat1:'"Nous perdons 40 heures par semaine en saisie manuelle de données."', demo_chat2:"Reconnu. Déploiement de l'Automatisation des Processus Métier.", demo_chat3:"ROI prévu : <strong>85k$/an économisés.</strong> Souhaitez-vous la feuille de route de déploiement ?",
-        process_h2:"Le Protocole d'Intégration", process_p:"Nous ne vous livrons pas simplement un logiciel. Nous architecturons des intégrations transparentes qui s'adaptent à votre structure sans perturber les flux existants.",
-        phase1_num:'Phase 01', phase1_h4:'Audit Approfondi', phase1_p:"Nous analysons votre pile technologique actuelle et identifions les goulots d'étranglement opérationnels qui drainent votre capital.",
-        phase2_num:'Phase 02', phase2_h4:'Développement Sur Mesure', phase2_p:"Ingénierie de flux de travail agentiques sur mesure et logique LLM isolée sur les données privées de votre entreprise.",
-        phase3_num:'Phase 03', phase3_h4:'Déploiement Sécurisé', phase3_p:"Intégration CI/CD transparente. Nous lançons l'IA en parallèle de votre équipe humaine pour garantir zéro temps d'arrêt.",
-        phase4_num:'Phase 04', phase4_h4:"Mise à l'Échelle Élastique", phase4_p:"Lorsque l'IA prouve son ROI, nous ouvrons les vannes, permettant aux systèmes autonomes de gérer 10x la charge.",
-        results_h2:'Validation des Algorithmes',
-        metric1_p:'ROI Moyen — Année 1', metric1_sub:"Basé sur 50+ intégrations d'entreprise.",
-        metric2_p:'Temps Économisé Automatiquement', metric2_sub:'Réduction des saisies manuelles de données.',
-        metric3_p:'Croissance de la Valeur du Pipeline', metric3_sub:'Grâce au sourcing sortant automatisé.',
-        careers_h2:"Rejoignez l'Intelligence", careers_p:"Nous évoluons rapidement. Construisez les systèmes autonomes qui définiront la prochaine décennie des opérations d'entreprise.",
-        job1_badge:'Ingénierie', job1_h3:'Architecte IA Senior', job1_p:'Concevez et déployez des environnements LLM isolés et des systèmes multi-agents pour des clients Fortune 500.', job1_loc:'Télétravail (Mondial)', job1_btn:'Postuler avec CV',
-        job2_badge:'Produit', job2_h3:"Directeur de l'Automatisation Technique", job2_p:"Auditez d'importants flux de travail d'entreprise et scriptez leur traduction en moteurs d'exécution autonomes.", job2_loc:'Télétravail (Mondial)', job2_btn:'Postuler avec CV',
-        contact_h2:'Initier le Déploiement', contact_p:"Soumettez vos paramètres opérationnels ci-dessous. Notre base de données enregistrera instantanément votre demande et alertera notre équipe d'ingénierie.",
-        contact_ph_name:'Nom Complet', contact_ph_email:'Email Professionnel', contact_ph_company:"Nom de l'Entreprise",
-        contact_opt0:"Sélectionner l'Intérêt Principal...", contact_opt1:'Automatisation IA', contact_opt2:'Solutions de Recrutement', contact_opt3:'Intégration de Systèmes',
-        contact_ph_msg:"Décrivez votre goulot d'étranglement opérationnel...", contact_btn:'Initier le Déploiement',
-        cta_h2:"Transformez Votre Entreprise avec l'IA Dès Aujourd'hui.", cta_p:"Vos concurrents intègrent déjà ces systèmes. Ne prenez pas de retard.", cta_btn:'Parler à un Expert IA',
-        footer_p:"Le cadre de référence pour l'automatisation d'entreprise et l'acquisition de talents intelligents.", footer_nav_heading:'Navigation', footer_link1:'Écosystème', footer_link2:'Protocole', footer_link3:'Contact', footer_contact_heading:'Contact', footer_location:'Montréal, QC, Canada', footer_copy:'© 2026 Manvion. Tous droits strictement réservés.',
-        chat_status:'● Synthèse en Direct', chat_ph:'Soumettre une requête...',
-        exit_h3:'Attendez ! Obtenez Votre Stratégie IA Gratuite', exit_p:"Vous partez sans savoir combien de capital l'IA pourrait vous faire économiser. Laissez-nous créer une feuille de route personnalisée.",
-        exit_ph_name:'Nom Complet', exit_ph_email:'Email Professionnel', exit_ph_phone:'Numéro de Téléphone', exit_ph_company:"Nom de l'Entreprise", exit_ph_needs:"Goulot d'Étranglement Opérationnel",
-        exit_btn:'Débloquer la Feuille de Route', exit_dismiss:'Ignorer',
-        apply_h3:'Soumettre une Candidature', apply_ph_name:'Nom Complet', apply_ph_email:'Adresse Email', apply_btn:'Télécharger et Envoyer le CV', apply_dismiss:'Annuler',
-        chat_welcome:"Bonjour, je suis Manvion AI. Comment puis-je vous aider à développer votre entreprise ? (ex: Ventes, Recrutement, Automatisation)",
-        chat_suggest: s => `Analyse en cours... Je recommande notre **${s}**. Quel est votre nom complet ?`,
-        chat_ask_email: n => `Ravi de vous rencontrer, ${n}. Quel email dois-je utiliser pour vous envoyer votre stratégie IA ?`,
-        chat_bad_email:'Veuillez fournir une adresse email valide afin que je puisse acheminer votre document stratégique.',
-        chat_ask_company:"Compris. Quel est le nom de votre entreprise ?",
-        chat_ask_req:"Parfait. Dernière question : quel est votre principal goulot d'étranglement opérationnel ?",
-        chat_thanks:"Merci ! Données synthétisées. Notre équipe vous contactera dans les 24 heures pour initier le déploiement.",
-        chat_done:"Session enregistrée dans votre dossier CRM. N'hésitez pas à explorer l'architecture.",
+        nav_services:'Services', nav_demo:'Démo', nav_process:'Comment Ça Marche', nav_results:'Résultats', nav_careers:'Carrières', nav_contact:'Contact', nav_cta:'Stratégie Gratuite',
+        hero_status:"L'Agence IA de Montréal",
+        hero_h1:"Automatisez Tout.<br><i class=\"gradient-text\">Dépassez Toutes les Limites.</i>",
+        hero_p:"Manvion AI construit des systèmes d'automatisation sur mesure qui gèrent vos tâches répétitives, trouvent les meilleurs talents automatiquement et développent vos revenus — sans embaucher plus de personnel. Basé à Montréal. Servir les entreprises partout dans le monde.",
+        hero_btn1:'Ma Stratégie IA Gratuite', hero_btn2:'Voir Comment Ça Marche',
+        services_h2:"Tout Ce Dont Votre Entreprise A Besoin pour Automatiser", services_p:"Des solutions IA qui éliminent le travail manuel, réduisent les coûts et libèrent votre équipe pour se concentrer sur ce qui fait vraiment croître votre entreprise.",
+        core_h3:'Services IA Principaux',
+        core1_h5:'Automatisation des Flux de Travail IA', core1_p:"Nous cartographions vos processus les plus chronophages et déployons une IA qui les exécute automatiquement — 24h/24, 7j/7, sans erreurs. De la saisie de données aux flux multi-étapes complexes.",
+        core2_h5:'IA Conçue pour Votre Entreprise', core2_p:"Nous entraînons l'IA sur les données de votre entreprise — vos produits, processus et clients — pour résoudre des problèmes qu'aucun logiciel standard ne peut traiter.",
+        core3_h5:'Assistants Vocaux & Chatbots IA', core3_p:"Déployez des assistants vocaux IA qui gèrent les appels entrants et des chatbots qui qualifient les prospects, répondent aux questions et réservent des réunions — 24h/24, sur tous les canaux.",
+        core4_h5:'Transformez les Données en Décisions', core4_p:"Nous transformons vos tableurs et données brutes en tableaux de bord clairs qui vous montrent exactement où trouver plus de revenus et où vous perdez de l'argent.",
+        scaling_h3:'Croissance & Intégration',
+        scal1_h5:'Grandissez Sans Embaucher Plus', scal1_p:"Gérez 5x, 10x — même 50x la charge de travail avec la même équipe. Votre IA évolue aussi vite que votre entreprise, à une fraction du coût d'une nouvelle embauche.",
+        scal2_h5:'Éliminez le Temps Perdu', scal2_p:"Nous cartographions l'ensemble de votre flux de travail, trouvons ce qui vous coûte des heures chaque semaine et le remplaçons par des processus IA rapides et sans erreur.",
+        scal3_h5:'Connectez Tous Vos Outils', scal3_p:"Votre CRM, email, calendrier et logiciels fonctionnent tous ensemble automatiquement. Plus de copier-coller entre applications, plus de données perdues.",
+        scal4_h5:'Stratégie & Conseil IA', scal4_p:"Vous ne savez pas où l'IA s'intègre dans votre entreprise ? Nous avons aidé 50+ entreprises à démarrer. Nous vous montrerons exactement où elle aura le plus grand impact — rapidement.",
+        hiring_h3:"Recrutement Propulsé par l'IA",
+        hire1_h5:'Trouvez les Bons Candidats Plus Vite', hire1_p:"Notre IA recherche sur des centaines de plateformes pour identifier les candidats qui correspondent exactement à vos exigences — et les contacte avant même qu'ils postulent ailleurs.",
+        hire2_h5:'Analysez 200 CV en 2 Minutes', hire2_p:"Arrêtez de passer vos soirées à lire des CV. Notre IA présélectionne uniquement les candidats qui valent votre temps — classés selon leur adéquation avec vos exigences.",
+        hire3_h5:"N'Interviewez Que les Meilleurs", hire3_p:"L'IA présélectionne les candidats, évalue leur adéquation et vous envoie une liste classée. Vous ne passez du temps qu'avec les personnes vraiment dignes d'être embauchées.",
+        demo_h2:"Regardez l'IA Résoudre un Vrai Problème d'Entreprise", demo_p:"Un chef d'entreprise décrit son problème. Notre IA identifie la solution et calcule le ROI en quelques secondes. C'est exactement ce que nous faisons pour chaque client — avant que vous dépensiez un seul dollar.", demo_btn:'Essayez Vous-Même →',
+        demo_chat1:'"Nous perdons 40 heures par semaine en saisie manuelle de données."', demo_chat2:"Compris. Je peux automatiser tout ce processus pour vous.", demo_chat3:"Économies estimées : <strong>85 000$/an.</strong> Voulez-vous voir votre feuille de route personnalisée ?",
+        process_h2:'Comment Nous Travaillons', process_p:"De votre premier appel à l'IA opérationnelle dans votre entreprise — voici notre processus éprouvé en 4 étapes. La plupart des clients sont pleinement opérationnels en 4 semaines.",
+        phase1_num:'Étape 01', phase1_h4:'Appel de Découverte Gratuit', phase1_p:"Nous passons 60 minutes à apprendre comment fonctionne votre entreprise et à identifier exactement où l'IA vous fera gagner le plus de temps et d'argent — sans frais.",
+        phase2_num:'Étape 02', phase2_h4:'Nous Construisons Votre IA', phase2_p:"Nous construisons une solution IA sur mesure conçue autour de vos outils, équipe et objectifs exacts. Tout est personnalisé pour votre entreprise — rien de générique.",
+        phase3_num:'Étape 03', phase3_h4:'Nous Lançons Ensemble', phase3_p:"Votre IA se lance aux côtés de votre équipe actuelle. Nous gérons le déploiement complet — zéro interruption et zéro perturbation dans votre fonctionnement actuel.",
+        phase4_num:'Étape 04', phase4_h4:"Elle S'Améliore Chaque Jour", phase4_p:"Votre IA apprend de chaque interaction et s'améliore continuellement. Au fur et à mesure que votre entreprise grandit, votre IA grandit avec elle.",
+        results_h2:'Résultats Réels de Clients Réels',
+        metric1_p:'ROI Moyen en Première Année', metric1_sub:'Sur 50+ déploiements clients dans le monde.',
+        metric2_p:'Moins de Travail Manuel', metric2_sub:"Heures libérées chaque semaine pour que votre équipe se concentre sur la croissance.",
+        metric3_p:'Plus de Valeur de Pipeline', metric3_sub:"Grâce à la génération de leads et la prospection automatisée par IA.",
+        trust1_num:'50+', trust1_label:'Entreprises Automatisées',
+        trust2_num:'300%', trust2_label:'ROI Moy. en 1ère Année',
+        trust3_num:'70%', trust3_label:'Moins de Travail Manuel',
+        trust4_num:'24h', trust4_label:'Réponse Garantie',
+        faq_h2:'Questions Fréquentes', faq_p:"Tout ce que vous devez savoir avant de commencer l'automatisation par IA.",
+        faq1_q:"Que fait exactement une agence d'automatisation IA ?", faq1_a:"Nous identifions les tâches dans votre entreprise qui prennent le plus de temps et d'argent — saisie de données, planification, recrutement, support client — et construisons des systèmes IA qui les gèrent automatiquement. Votre équipe se concentre sur le travail à haute valeur, vos coûts baissent et votre production augmente.",
+        faq2_q:'Quand verrai-je des résultats ?', faq2_a:"La plupart des clients sont opérationnels en 4 semaines et voient des économies de temps mesurables dans les 30 premiers jours. Un ROI significatif — généralement 2 à 3 fois l'investissement — apparaît généralement dans les 3 à 6 mois.",
+        faq3_q:"Dois-je comprendre l'IA ou être technique ?", faq3_a:"Pas du tout. Vous n'avez pas besoin de comprendre le fonctionnement de l'IA — c'est notre travail. Vous décrivez vos problèmes en langage simple et nous gérons tout, de la conception au déploiement.",
+        faq4_q:'Est-ce compatible avec mes logiciels actuels ?', faq4_a:"Oui. Nous connectons votre IA à votre CRM, email, calendrier et tout autre outil existant — y compris HubSpot, Salesforce, Google Workspace, Slack, et bien d'autres. Nous nous adaptons à votre flux de travail.",
+        faq5_q:'Combien ça coûte ?', faq5_a:"Chaque projet est évalué individuellement. La meilleure première étape est un appel stratégique gratuit de 30 minutes où nous apprenons à connaître votre entreprise et vous donnons un devis clair sans surprises.",
+        careers_h2:'Travaillez Avec Nous', careers_p:"Nous sommes une agence IA en pleine croissance qui construit des systèmes qui changent la façon dont les entreprises fonctionnent. Si vous excellez dans votre domaine, nous voulons travailler avec vous.",
+        job1_badge:'Ingénierie', job1_h3:'Ingénieur IA Senior', job1_p:"Construisez des systèmes IA de qualité production et des flux de travail multi-agents pour des entreprises d'Amérique du Nord et au-delà. Gérez vos projets de bout en bout.", job1_loc:'Télétravail (Mondial)', job1_btn:'Postuler avec CV',
+        job2_badge:'Conseil', job2_h3:'Consultant en Automatisation', job2_p:"Travaillez directement avec des clients pour cartographier leurs flux de travail et concevoir des solutions IA qui leur font gagner du temps et de l'argent. Vous parlez aux entreprises, nous construisons les systèmes.", job2_loc:'Télétravail (Mondial)', job2_btn:'Postuler avec CV',
+        contact_h2:'Parlons de Votre Entreprise', contact_p:"Dites-nous votre plus grand défi. Nous vous répondrons dans les 24 heures avec un plan clair sur la façon dont l'IA peut aider — sans frais.",
+        contact_ph_name:'Votre Nom', contact_ph_email:'Votre Email', contact_ph_company:"Nom de l'Entreprise",
+        contact_opt0:'Comment pouvons-nous vous aider ?', contact_opt1:'Automatiser mes tâches', contact_opt2:'Améliorer mon recrutement', contact_opt3:'Connecter mes outils',
+        contact_ph_msg:'Quel est votre plus grand défi commercial en ce moment ?', contact_btn:'Envoyer Ma Demande →',
+        cta_h2:'Prêt à Économiser 40+ Heures par Semaine ?', cta_p:"Rejoignez 50+ entreprises à Montréal et au-delà qui utilisent déjà Manvion AI pour travailler plus intelligemment et grandir sans limites.", cta_btn:'Réserver un Appel Stratégique Gratuit',
+        footer_p:"Transformer les entreprises ambitieuses en machines alimentées par l'IA et auto-évolutives depuis 2024.", footer_nav_heading:'Navigation', footer_link1:'Services', footer_link2:'Comment Ça Marche', footer_link_faq:'FAQ', footer_link3:'Contact', footer_contact_heading:'Contact', footer_location:'Montréal, QC, Canada', footer_copy:'© 2026 Manvion AI. Tous droits réservés.',
+        chat_status:'● En Direct — Prêt à Aider', chat_ph:'Tapez votre question...',
+        exit_h3:'Attendez — Obtenez Votre Stratégie IA Gratuite', exit_p:"Avant de partir, découvrez combien de temps et d'argent l'IA pourrait faire économiser à votre entreprise. Cela prend 2 minutes.",
+        exit_ph_name:'Votre Nom', exit_ph_email:'Votre Email', exit_ph_phone:'Numéro de Téléphone', exit_ph_company:"Nom de l'Entreprise", exit_ph_needs:'Votre Plus Grand Défi Commercial',
+        exit_btn:'Obtenir Ma Feuille de Route Gratuite', exit_dismiss:'Non merci',
+        apply_h3:'Soumettre Votre Candidature', apply_ph_name:'Nom Complet', apply_ph_email:'Adresse Email', apply_btn:'Télécharger et Envoyer le CV', apply_dismiss:'Annuler',
+        chat_welcome:"Bonjour, je suis Manvion AI. Qu'est-ce que je peux vous aider à construire ou automatiser ? (ex: Site web, Vocal IA, Chatbots, Recrutement, Automatisation)",
+        chat_suggest: s => `Basé sur ce que vous avez partagé, notre **${s}** est exactement ce qu'il vous faut. Pour créer votre stratégie personnalisée, quel est votre nom ?`,
+        chat_ask_email: n => `Ravi de vous rencontrer, ${n} ! À quel email dois-je envoyer votre rapport de stratégie IA gratuit ?`,
+        chat_bad_email:"Hmm, cet email ne semble pas correct. Pourriez-vous le vérifier ? Je veux m'assurer que votre stratégie arrive dans la bonne boîte de réception.",
+        chat_ask_company:'Parfait. Pour quelle entreprise est-ce ?',
+        chat_ask_req:"Presque terminé — quel est le principal goulot d'étranglement qui grignote votre temps ou vos revenus en ce moment ?",
+        chat_thanks:"Notre équipe examine personnellement chaque soumission et vous contactera dans les 24 heures avec une stratégie adaptée spécifiquement à votre entreprise. Pas de modèles — juste un plan clair et personnalisé.",
+        chat_done:"N'hésitez pas à explorer nos services en attendant. Vous aurez de nos nouvelles très bientôt.",
         svc_recruit:'Solutions de Recrutement IA', svc_sales:'Automatisation des Ventes IA', svc_chat:'Chatbots & Agents IA', svc_custom:"Optimisation de Flux de Travail IA",
+        svc_voice:"Solutions d'Assistants Vocaux IA", svc_data:'Insights & Tableaux de Bord IA', svc_website:'Développement Web & Applications Sur Mesure',
+        contact_opt4:'Créer mon site web',
+        web_h3:'Web & Présence Numérique',
+        web1_h5:'Développement de Sites Web Sur Mesure', web1_p:"Nous concevons et construisons des sites web haute performance adaptés à votre marque — rapides, optimisés pour la conversion et prêts à évoluer avec votre entreprise.",
+        web2_h5:"Applications Web Intégrées à l'IA", web2_p:"Des applications web personnalisées avec l'IA intégrée dès le départ — tableaux de bord intelligents, déclencheurs d'automatisation et traitement de données en temps réel.",
+        web3_h5:"Pages d'Atterrissage & Entonnoirs", web3_p:"Des pages d'atterrissage et entonnoirs de vente à fort taux de conversion pour capturer des prospects et générer des revenus — soutenus par les données.",
+        web4_h5:'E-Commerce & Boutiques', web4_p:"Des solutions e-commerce de bout en bout avec recommandations IA, automatisation des stocks et expériences de paiement fluides qui convertissent.",
     }
 };
 
@@ -144,6 +178,14 @@ const setLanguage = (lang) => {
 };
 
 const toggleLang = () => setLanguage(currentLang === 'en' ? 'fr' : 'en');
+
+const toggleTheme = () => {
+    const body = document.body;
+    const btn = document.getElementById('theme-toggle');
+    const isLight = body.classList.toggle('light-theme');
+    if (btn) btn.textContent = isLight ? '☾' : '☀';
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+};
 
 /* -----------------------------------------
    1. PREMIUM WEBGL NEURAL CORE
@@ -305,10 +347,21 @@ const logicEngine = (input) => {
         case 1:
             lead.needRaw = input;
             const lw = input.toLowerCase();
-            if(lw.includes('hire') || lw.includes('recruit') || lw.includes('embauche') || lw.includes('recrut')) lead.service = t.svc_recruit;
-            else if(lw.includes('sale') || lw.includes('lead') || lw.includes('vente')) lead.service = t.svc_sales;
-            else if(lw.includes('support') || lw.includes('chat')) lead.service = t.svc_chat;
-            else lead.service = t.svc_custom;
+            if (lw.includes('hire') || lw.includes('recruit') || lw.includes('talent') || lw.includes('embauche') || lw.includes('recrut') || lw.includes('candidat') || lw.includes('staff')) {
+                lead.service = t.svc_recruit;
+            } else if (lw.includes('website') || lw.includes('web') || lw.includes('site') || lw.includes('design') || lw.includes('landing') || lw.includes('ecommerce') || lw.includes('boutique') || lw.includes('store')) {
+                lead.service = t.svc_website;
+            } else if (lw.includes('voice') || lw.includes('phone') || lw.includes('call') || lw.includes('vocal') || lw.includes('appel')) {
+                lead.service = t.svc_voice;
+            } else if (lw.includes('data') || lw.includes('analytics') || lw.includes('dashboard') || lw.includes('insight') || lw.includes('rapport') || lw.includes('tableau')) {
+                lead.service = t.svc_data;
+            } else if (lw.includes('sale') || lw.includes('lead') || lw.includes('vente') || lw.includes('prospect') || lw.includes('revenue') || lw.includes('crm')) {
+                lead.service = t.svc_sales;
+            } else if (lw.includes('support') || lw.includes('chat') || lw.includes('bot') || lw.includes('chatbot') || lw.includes('assistant')) {
+                lead.service = t.svc_chat;
+            } else {
+                lead.service = t.svc_custom;
+            }
             cState = 2;
             emitAI(t.chat_suggest(lead.service));
             break;
@@ -364,6 +417,16 @@ const captureLead = async (data, method) => {
     } catch (err) {
         console.error(`[LEAD CAPTURE FAILED: ${method}]`, err);
     }
+};
+
+/* -----------------------------------------
+   FAQ ACCORDION
+----------------------------------------- */
+const toggleFaq = (btn) => {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
 };
 
 /* -----------------------------------------
@@ -514,6 +577,11 @@ const handleApplySubmit = async (e) => {
    APP STARTUP
 ----------------------------------------- */
 window.onload = () => {
+    if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-theme');
+        const btn = document.getElementById('theme-toggle');
+        if (btn) btn.textContent = '☾';
+    }
     setLanguage(localStorage.getItem('lang') || 'en');
     initSpace();
     initMotion();
