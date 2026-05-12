@@ -12,11 +12,15 @@ async function appendToSheet(row) {
     let private_key = process.env.GOOGLE_PRIVATE_KEY;
 
     if (!client_email || !private_key) {
-        const creds = JSON.parse(process.env.GOOGLE_CREDENTIALS || '{}');
-        client_email = creds.client_email;
-        private_key = creds.private_key;
+        try {
+            const creds = JSON.parse(process.env.GOOGLE_CREDENTIALS || '{}');
+            client_email = creds.client_email;
+            private_key = creds.private_key;
+        } catch (e) {
+            throw new Error('GOOGLE_CREDENTIALS is not valid JSON: ' + e.message);
+        }
     }
-    if (!client_email) throw new Error('Missing Google credentials env vars');
+    if (!client_email) throw new Error('GOOGLE_CREDENTIALS parsed but client_email field is missing or empty');
 
     private_key = private_key.replace(/\\n/g, '\n');
 
