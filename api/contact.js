@@ -47,14 +47,14 @@ async function appendToSheet(row) {
 }
 
 app.post('*', async (req, res) => {
-    const { name, email, company, service, message } = req.body || {};
+    const { name, email, phone, company, service, message } = req.body || {};
     let sheetSaved = false;
     let emailSent = false;
     let sheetError = null;
     let emailError = null;
 
     try {
-        await appendToSheet([name, email, company, service, message, new Date().toISOString()]);
+        await appendToSheet([name, email, phone || '', company, service, message, new Date().toISOString()]);
         sheetSaved = true;
     } catch (err) {
         sheetError = err.message;
@@ -74,7 +74,7 @@ app.post('*', async (req, res) => {
                 to: MY_EMAIL,
                 replyTo: email,
                 subject: `NEW LEAD: ${service} - ${company}`,
-                text: `New lead from Manvion.\n\nName: ${name}\nEmail: ${email}\nCompany: ${company}\nService: ${service}\n\nMessage:\n${message}`
+                text: `New lead from Manvion.\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone || 'N/A'}\nCompany: ${company}\nService: ${service}\n\nMessage:\n${message}`
             });
             emailSent = true;
         } catch (err) {

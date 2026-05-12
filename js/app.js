@@ -56,7 +56,7 @@ const translations = {
         job1_badge:'Engineering', job1_h3:'Senior AI Engineer', job1_p:'Build production-grade AI systems and multi-agent workflows for businesses across North America and beyond. Own your projects end to end.', job1_loc:'Remote (Global)', job1_btn:'Apply with Resume',
         job2_badge:'Consulting', job2_h3:'Automation Consultant', job2_p:'Work directly with clients to map their workflows and design AI solutions that save them time and money. You talk to businesses, we build the systems.', job2_loc:'Remote (Global)', job2_btn:'Apply with Resume',
         contact_h2:"Let's Talk About Your Business", contact_p:"Tell us your biggest challenge. We'll come back to you within 24 hours with a clear plan for how AI can help — at no cost.",
-        contact_ph_name:'Your Name', contact_ph_email:'Your Email', contact_ph_company:'Company Name',
+        contact_ph_name:'Your Name', contact_ph_email:'Your Email', contact_ph_phone:'Phone Number (optional)', contact_ph_company:'Company Name',
         contact_opt0:'What can we help you with?', contact_opt1:'Automate My Tasks', contact_opt2:'Improve My Hiring', contact_opt3:'Connect My Tools',
         contact_ph_msg:"What's your biggest business challenge right now?", contact_btn:'Send My Request →',
         cta_h2:'Ready to Save 40+ Hours a Week?', cta_p:'Join 50+ businesses in Montreal and beyond already using Manvion AI to work smarter, move faster, and grow without limits.', cta_btn:'Book a Free Strategy Call',
@@ -71,7 +71,8 @@ const translations = {
         chat_ask_email: n => `Great to meet you, ${n}! What email should I send your free AI strategy report to?`,
         chat_bad_email:'Hmm, that email doesn\'t look right. Could you double-check it? I want to make sure your strategy lands in the right inbox.',
         chat_ask_company:'Perfect. What company is this for?',
-        chat_ask_req:"Almost there — what's the single biggest bottleneck eating your time or revenue right now?",
+        chat_ask_phone:"What's the best phone number to reach you on?",
+        chat_ask_req:"Last one — what's the single biggest bottleneck eating your time or revenue right now?",
         chat_thanks:'Our team personally reviews every submission and will reach out within 24 hours with a strategy tailored specifically to your business. No templates — just a clear, custom plan.',
         chat_done:'Feel free to explore our services and results in the meantime. You\'ll hear from us very soon.',
         svc_recruit:'AI Recruitment Solutions', svc_sales:'AI Sales Automation', svc_chat:'AI Chatbots & Agents', svc_custom:'Custom AI Workflow Optimization',
@@ -129,7 +130,7 @@ const translations = {
         job1_badge:'Ingénierie', job1_h3:'Ingénieur IA Senior', job1_p:"Construisez des systèmes IA de qualité production et des flux de travail multi-agents pour des entreprises d'Amérique du Nord et au-delà. Gérez vos projets de bout en bout.", job1_loc:'Télétravail (Mondial)', job1_btn:'Postuler avec CV',
         job2_badge:'Conseil', job2_h3:'Consultant en Automatisation', job2_p:"Travaillez directement avec des clients pour cartographier leurs flux de travail et concevoir des solutions IA qui leur font gagner du temps et de l'argent. Vous parlez aux entreprises, nous construisons les systèmes.", job2_loc:'Télétravail (Mondial)', job2_btn:'Postuler avec CV',
         contact_h2:'Parlons de Votre Entreprise', contact_p:"Dites-nous votre plus grand défi. Nous vous répondrons dans les 24 heures avec un plan clair sur la façon dont l'IA peut aider — sans frais.",
-        contact_ph_name:'Votre Nom', contact_ph_email:'Votre Email', contact_ph_company:"Nom de l'Entreprise",
+        contact_ph_name:'Votre Nom', contact_ph_email:'Votre Email', contact_ph_phone:'Numéro de téléphone (optionnel)', contact_ph_company:"Nom de l'Entreprise",
         contact_opt0:'Comment pouvons-nous vous aider ?', contact_opt1:'Automatiser mes tâches', contact_opt2:'Améliorer mon recrutement', contact_opt3:'Connecter mes outils',
         contact_ph_msg:'Quel est votre plus grand défi commercial en ce moment ?', contact_btn:'Envoyer Ma Demande →',
         cta_h2:'Prêt à Économiser 40+ Heures par Semaine ?', cta_p:"Rejoignez 50+ entreprises à Montréal et au-delà qui utilisent déjà Manvion AI pour travailler plus intelligemment et grandir sans limites.", cta_btn:'Réserver un Appel Stratégique Gratuit',
@@ -144,7 +145,8 @@ const translations = {
         chat_ask_email: n => `Ravi de vous rencontrer, ${n} ! À quel email dois-je envoyer votre rapport de stratégie IA gratuit ?`,
         chat_bad_email:"Hmm, cet email ne semble pas correct. Pourriez-vous le vérifier ? Je veux m'assurer que votre stratégie arrive dans la bonne boîte de réception.",
         chat_ask_company:'Parfait. Pour quelle entreprise est-ce ?',
-        chat_ask_req:"Presque terminé — quel est le principal goulot d'étranglement qui grignote votre temps ou vos revenus en ce moment ?",
+        chat_ask_phone:"Quel est le meilleur numéro de téléphone pour vous joindre ?",
+        chat_ask_req:"Dernière question — quel est le principal goulot d'étranglement qui grignote votre temps ou vos revenus en ce moment ?",
         chat_thanks:"Notre équipe examine personnellement chaque soumission et vous contactera dans les 24 heures avec une stratégie adaptée spécifiquement à votre entreprise. Pas de modèles — juste un plan clair et personnalisé.",
         chat_done:"N'hésitez pas à explorer nos services en attendant. Vous aurez de nos nouvelles très bientôt.",
         svc_recruit:'Solutions de Recrutement IA', svc_sales:'Automatisation des Ventes IA', svc_chat:'Chatbots & Agents IA', svc_custom:"Optimisation de Flux de Travail IA",
@@ -286,8 +288,8 @@ const chatMsgs = document.getElementById('chat-messages');
 const chatInput = document.getElementById('chat-input');
 const floatBtn = document.getElementById('floating-chat-btn');
 
-let cState = 0; 
-let lead = { needRaw: '', service: '', name: '', email: '', company: '', requirement: '' };
+let cState = 0;
+let lead = { needRaw: '', service: '', name: '', email: '', phone: '', company: '', requirement: '' };
 
 const openChat = (context = 'organic') => {
     sideChat.classList.add('active');
@@ -382,15 +384,20 @@ const logicEngine = (input) => {
         case 4:
             lead.company = input;
             cState = 5;
-            emitAI(t.chat_ask_req);
+            emitAI(t.chat_ask_phone);
             break;
         case 5:
-            lead.requirement = input;
-            captureLead(lead, "Chatbot Core");
+            lead.phone = input;
             cState = 6;
-            emitAI(t.chat_thanks);
+            emitAI(t.chat_ask_req);
             break;
         case 6:
+            lead.requirement = input;
+            captureLead(lead, "Chatbot Core");
+            cState = 7;
+            emitAI(t.chat_thanks);
+            break;
+        case 7:
             emitAI(t.chat_done);
             break;
     }
@@ -409,6 +416,7 @@ const captureLead = async (data, method) => {
             body: JSON.stringify({
                 name: data.name || '',
                 email: data.email || '',
+                phone: data.phone || '',
                 company: data.company || '',
                 service: data.service || '',
                 message: data.requirement || data.message || ''
@@ -482,6 +490,7 @@ const handleContactSubmit = async (e) => {
     const leadData = {
         name: document.getElementById('c-name').value,
         email: document.getElementById('c-email').value,
+        phone: document.getElementById('c-phone').value,
         company: document.getElementById('c-company').value,
         service: document.getElementById('c-service').value,
         message: document.getElementById('c-message').value
